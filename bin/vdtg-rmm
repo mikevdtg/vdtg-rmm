@@ -55,8 +55,8 @@ then
         apt install -y net-tools
     fi
 
-    # Get locale from vdtg-rmm.config file
-    locale=$(grep "locale" /opt/vdtg-rmm/vdtg-rmm.config | cut -d'=' -f2)
+    # Get locale from vdtg-rmm.config file ignore all lines starting with '#' because they are comments
+    locale=$(grep -v '^#' /opt/vdtg-rmm/vdtg-rmm.config | grep -i 'locale' | awk -F'=' '{print $2}')
 
     # Check if language-pack-$locale is installed
     if ! dpkg -l | grep -q language-pack-$locale
