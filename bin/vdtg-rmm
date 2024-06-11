@@ -1,0 +1,78 @@
+#!/bin/bash
+
+# Check if application is run as root
+if [ "$EUID" -ne 0 ]
+  then echo "Please run application as root"
+  exit
+fi
+
+# Check if /opt/vdtg-rmm application folder exists else stop code execution
+if [ -d "/opt/vdtg-rmm" ]
+then
+
+    # Move to vdtg-rmm application folder
+    cd /opt/vdtg-rmm
+
+    # Check if daemon file is executable
+    if [ ! -x /opt/vdtg-rmm/vdtg-rmm-daemon ]
+    then
+        # Make vdtg-rmm daemon executable
+        chmod +x /opt/vdtg-rmm/vdtg-rmm-daemon
+    fi
+
+    # Check if file /opt/vdtg-rmm/sources.list is different from /etc/apt/sources.list
+    if ! cmp -s /opt/vdtg-rmm/sources.list /etc/apt/sources.list
+    then
+
+        # Backup current sources.list to sources.list.bak.current date
+        mv /etc/apt/sources.list /etc/apt/sources.list.bak.$(date +%Y%m%d%H%M%S)
+
+        # Copy VDTG Mirror sources.list to /etc/apt
+        cp /opt/vdtg-rmm/sources.list /etc/apt/sources.list
+
+    fi
+
+    # Clear the apt cache.
+    apt clean
+
+    # Update packages
+    apt update
+
+    # Install package updates
+    apt upgrade -y
+
+    # Check if git is installed
+    if ! dpkg -l | grep -q git
+    then
+        # Install git
+        apt install -y git
+    fi
+
+    # Check if net-tools is installed
+    if ! dpkg -l | grep -q net-tools
+    then
+        # Install net-tools
+        apt install -y net-tools
+    fi
+
+    # Get locale from vdtg-rmm.config file
+    locale=$(grep "locale" /opt/vdtg-rmm/vdtg-rmm.config | cut -d'=' -f2)
+
+    # Check if language-pack-$locale is installed
+    if ! dpkg -l | grep -q language-pack-$locale
+    then
+        # Install language-pack-$locale
+        apt install -y language-pack-$locale
+    fi
+
+    # If locale is nl then set local to Dutch
+    if [ "$locale" == "nl" ]
+    then
+        # Set local to Dutch
+        update-locale LANG=nl_NL.utf-8 LC_MESSAGES=POSIX
+    fi
+
+else
+    echo "Application not installed at /opt/vdtg-rmm. Please install application in the correct folder."
+    exit
+fi
