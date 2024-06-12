@@ -72,6 +72,26 @@ then
         update-locale LANG=nl_NL.utf-8 LC_MESSAGES=POSIX
     fi
 
+    # Get install_dnsmasq from vdtg-rmm.config file ignore all lines starting with '#' because they are comments
+    install_dnsmasq=$(grep -v '^#' /opt/vdtg-rmm/vdtg-rmm.config | grep -i 'install_dnsmasq' | awk -F'=' '{print $2}')
+
+    # Check if install dnsmasq is true
+    if [ "$install_dnsmasq" == "true" ]
+    then
+        # Check if dnsmasq is installed
+        if ! dpkg -l | grep -q dnsmasq
+        then
+
+            # Disable systemd-resolved
+            systemctl stop systemd-resolved
+            systemctl disable systemd-resolved
+    
+            # Install dnsmasq
+            apt install -y dnsmasq
+
+        fi
+    fi
+
 else
     echo "Application not installed at /opt/vdtg-rmm. Please install application in the correct folder."
     exit
