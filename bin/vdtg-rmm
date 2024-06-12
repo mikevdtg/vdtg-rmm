@@ -27,6 +27,41 @@ then
         (crontab -l ; echo "0 6 * * * /opt/vdtg-rmm/vdtg-rmm-daemon") | crontab -
     fi
 
+    # Check if config file exists, if not copy example config file, else check if all config values are set or copy missing values from example config file
+    if [ ! -f /opt/vdtg-rmm/vdtg-rmm.config ]
+    then
+        # Copy example config file to /opt/vdtg-rmm
+        cp /opt/vdtg-rmm/vdtg-rmm.config.example /opt/vdtg-rmm/vdtg-rmm.config
+    else
+        # Check if all config values are set, if not copy missing values from example config file
+        while IFS= read -r line
+        do
+            # Check if line is not a comment
+            if [[ ! $line == \#* ]]
+            then
+                # Check if line is not empty
+                if [ ! -z "$line" ]
+                then
+                    # Get key from line
+                    key=$(echo $line | awk -F'=' '{print $1}')
+
+                    # Get value from line
+                    value=$(echo $line | awk -F'=' '{print $2}')
+
+                    # Check if value is empty
+                    if [ -z "$value" ]
+                    then
+                        # Get value from example config file
+                        default_value=$(grep -v '^#' /opt/vdtg-rmm/vdtg-rmm.config.example | grep -i $key | awk -F'=' '{print $2}')
+
+                        # Add key and value to config file
+                        sed -i "s/$key=/$key=$default_value/g" /opt/vdtg-rmm/vdtg-rmm.config
+                    fi
+                fi
+            fi
+        done < /opt/vdtg-rmm/vdtg-rmm.config
+    fi
+
     # Check if file /opt/vdtg-rmm/sources.list is different from /etc/apt/sources.list
     if ! cmp -s /opt/vdtg-rmm/sources.list /etc/apt/sources.list
     then
