@@ -13,6 +13,9 @@ then
     # Move to vdtg-rmm application folder
     cd /opt/vdtg-rmm
 
+    # Reset any changes made to the git repository
+    git reset --hard
+
     # Pull latest changes from git
     git pull
 
