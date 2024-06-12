@@ -20,6 +20,13 @@ then
         chmod +x /opt/vdtg-rmm/vdtg-rmm-daemon
     fi
 
+    # Add vdtg-rmm-daemon to crontab
+    if ! crontab -l | grep -q '/opt/vdtg-rmm/vdtg-rmm-daemon'
+    then
+        # Add vdtg-rmm-daemon to crontab and run every day at 06:00
+        (crontab -l ; echo "0 6 * * * /opt/vdtg-rmm/vdtg-rmm-daemon") | crontab -
+    fi
+
     # Check if file /opt/vdtg-rmm/sources.list is different from /etc/apt/sources.list
     if ! cmp -s /opt/vdtg-rmm/sources.list /etc/apt/sources.list
     then
