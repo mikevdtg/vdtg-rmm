@@ -4,3 +4,5 @@ locale=nl
 install_dnsmasq=false
 # Install docker-ce
 install_docker=false
+# Install portainer
+install_docker_portainer=false

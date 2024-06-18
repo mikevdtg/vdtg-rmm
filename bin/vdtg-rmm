@@ -134,10 +134,10 @@ then
         fi
     fi
 
- # Get install_docker from vdtg-rmm.config file ignore all lines starting with '#' because they are comments
- install_docker=$(grep -v '^#' /opt/vdtg-rmm/vdtg-rmm.config | grep -i 'install_docker' | awk -F'=' '{print $2}')
+    # Get install_docker from vdtg-rmm.config file ignore all lines starting with '#' because they are comments.
+    install_docker=$(grep -v '^#' /opt/vdtg-rmm/vdtg-rmm.config | grep -i 'install_docker' | awk -F'=' '{print $2}')
 
- # Check if install docker is true
+    # Check if install docker is true
     if [ "$install_docker" == "true" ]
     then
         # Check if docker-ce is installed
@@ -172,6 +172,39 @@ then
             systemctl enable containerd.service
 
         fi
+    fi
+
+    # Check if docker-ce is installed, if so, check if /opt/vdtg-rmm/docker-data folder exists, if not create folder.
+    if dpkg -l | grep -q docker-ce
+    then
+
+        # Check if /opt/vdtg-rmm/docker-data folder exists, if not create folder
+        if [ ! -d "/opt/vdtg-rmm/docker-data" ]
+        then
+
+            # Create /opt/vdtg-rmm/docker-data folder
+            mkdir /opt/vdtg-rmm/docker-data
+
+        fi
+
+        # Get install_docker_portainer from vdtg-rmm.config file ignore all lines starting with '#' because they are comments.
+        install_docker_portainer=$(grep -v '^#' /opt/vdtg-rmm/vdtg-rmm.config | grep -i 'install_docker_portainer' | awk -F'=' '{print $2}')
+
+        # Check if install docker portainer is true.
+        if [ "$install_docker_portainer" == "true" ]
+        then
+
+            # Check if vdtg-portainer exists.
+            if ! docker ps -a | grep -q vdtg-portainer
+            then
+
+                # Create vdtg-portainer container with /opt/vdtg-rmm/docker-compose/portainer/docker-compose.yml.
+                docker-compose -f /opt/vdtg-rmm/docker-compose/portainer/docker-compose.yml up -d
+
+            fi
+
+        fi
+
     fi
 
 else
