@@ -6,3 +6,5 @@ install_dnsmasq=false
 install_docker=false
 # Install portainer
 install_docker_portainer=false
+# Install unifi-video
+install_docker_unifi-video=false

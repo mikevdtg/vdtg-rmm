@@ -205,6 +205,24 @@ then
 
         fi
 
+        # Get install_docker_unifi-video from vdtg-rmm.config file ignore all lines starting with '#' because they are comments.
+        install_docker_unifi_video=$(grep -v '^#' /opt/vdtg-rmm/vdtg-rmm.config | grep -i 'install_docker_unifi_video' | awk -F'=' '{print $2}')
+
+        # Check if install docker unifi video is true.
+        if [ "$install_docker_unifi_video" == "true" ]
+        then
+
+            # Check if vdtg-unifi-video exists.
+            if ! docker ps -a | grep -q vdtg-unifi-video
+            then
+
+                # Create vdtg-unifi-video container with /opt/vdtg-rmm/docker-compose/unifi-video/docker-compose.yml.
+                docker compose -f /opt/vdtg-rmm/docker-compose/unifi-video/docker-compose.yml up -d
+
+            fi
+
+        fi
+
     fi
 
 else
