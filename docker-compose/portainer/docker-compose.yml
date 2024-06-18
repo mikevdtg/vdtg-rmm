@@ -12,4 +12,4 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /opt/vdtg-rmm/docker-data/portainer:/data
     ports:
-- 9000:9000
+      - 9000:9000
