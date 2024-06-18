@@ -2,3 +2,4 @@
 locale=nl
 # Install dnsmasq
 install_dnsmasq=false
+install_docker=false
