@@ -2,6 +2,7 @@ services:
   unifi-video:
     image: pducharme/unifi-video-controller
     container_name: vdtg-unifi-video
+    restart: unless-stopped
     cap_add:
       - DAC_READ_SEARCH
     ports:
@@ -16,6 +17,7 @@ services:
       - 7446:7446
       - 7447:7447
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - /opt/vdtg-rmm/docker-data/unifi-video:/var/lib/unifi-video
       - /mnt/bigstorage/unifi-video/videos:/var/lib/unifi-video/videos
       - /tmp/unifi-video:/var/cache/unifi-video
