@@ -134,6 +134,9 @@ then
         fi
     fi
 
+ # Get install_docker from vdtg-rmm.config file ignore all lines starting with '#' because they are comments
+ install_docker=$(grep -v '^#' /opt/vdtg-rmm/vdtg-rmm.config | grep -i 'install_docker' | awk -F'=' '{print $2}')
+
  # Check if install docker is true
     if [ "$install_docker" == "true" ]
     then
