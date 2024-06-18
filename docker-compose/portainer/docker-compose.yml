@@ -11,3 +11,5 @@ services:
       - /opt/vdtg-rmm/docker-data/portainer:/data
     ports:
       - 9000:9000
+    environment:
+      - TZ=Europe/Amsterdam
