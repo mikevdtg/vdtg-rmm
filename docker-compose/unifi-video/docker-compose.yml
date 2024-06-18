@@ -17,6 +17,7 @@ services:
       - 7447:7447
     volumes:
       - /opt/vdtg-rmm/docker-data/unifi-video:/var/lib/unifi-video
+      - /mnt/bigstorage/unifi-video/videos:/var/lib/unifi-video/videos
       - /tmp/unifi-video:/var/cache/unifi-video
     environment:
       - TZ=Europe/Amsterdam

@@ -216,6 +216,15 @@ then
             if ! docker ps -a | grep -q vdtg-unifi-video
             then
 
+                # Check if /mnt/bigstorage folder exists, if not create folder.
+                if [ ! -d "/mnt/bigstorage" ]
+                then
+
+                    # Create /mnt/bigstorage folder
+                    mkdir /mnt/bigstorage
+
+                fi
+
                 # Create vdtg-unifi-video container with /opt/vdtg-rmm/docker-compose/unifi-video/docker-compose.yml.
                 docker compose -f /opt/vdtg-rmm/docker-compose/unifi-video/docker-compose.yml up -d
 
