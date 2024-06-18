@@ -2,4 +2,5 @@
 locale=nl
 # Install dnsmasq
 install_dnsmasq=false
+# Install docker-ce
 install_docker=false
