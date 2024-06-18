@@ -1,0 +1,17 @@
+C:\Users\VanDerToorn&GeertseM\Source\Repos\mikevdtg\vdtg-rmm\VDTG RMM\bin\Debug\net8.0-windows\VDTG RMM.exe
+C:\Users\VanDerToorn&GeertseM\Source\Repos\mikevdtg\vdtg-rmm\VDTG RMM\bin\Debug\net8.0-windows\VDTG RMM.deps.json
+C:\Users\VanDerToorn&GeertseM\Source\Repos\mikevdtg\vdtg-rmm\VDTG RMM\bin\Debug\net8.0-windows\VDTG RMM.runtimeconfig.json
+C:\Users\VanDerToorn&GeertseM\Source\Repos\mikevdtg\vdtg-rmm\VDTG RMM\bin\Debug\net8.0-windows\VDTG RMM.dll
+C:\Users\VanDerToorn&GeertseM\Source\Repos\mikevdtg\vdtg-rmm\VDTG RMM\bin\Debug\net8.0-windows\VDTG RMM.pdb
+C:\Users\VanDerToorn&GeertseM\Source\Repos\mikevdtg\vdtg-rmm\VDTG RMM\obj\Debug\net8.0-windows\VDTG_RMM.Form1.resources
+C:\Users\VanDerToorn&GeertseM\Source\Repos\mikevdtg\vdtg-rmm\VDTG RMM\obj\Debug\net8.0-windows\VDTG RMM.csproj.GenerateResource.cache
+C:\Users\VanDerToorn&GeertseM\Source\Repos\mikevdtg\vdtg-rmm\VDTG RMM\obj\Debug\net8.0-windows\VDTG RMM.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\VanDerToorn&GeertseM\Source\Repos\mikevdtg\vdtg-rmm\VDTG RMM\obj\Debug\net8.0-windows\VDTG RMM.AssemblyInfoInputs.cache
+C:\Users\VanDerToorn&GeertseM\Source\Repos\mikevdtg\vdtg-rmm\VDTG RMM\obj\Debug\net8.0-windows\VDTG RMM.AssemblyInfo.cs
+C:\Users\VanDerToorn&GeertseM\Source\Repos\mikevdtg\vdtg-rmm\VDTG RMM\obj\Debug\net8.0-windows\VDTG RMM.csproj.CoreCompileInputs.cache
+C:\Users\VanDerToorn&GeertseM\Source\Repos\mikevdtg\vdtg-rmm\VDTG RMM\obj\Debug\net8.0-windows\VDTG RMM.sourcelink.json
+C:\Users\VanDerToorn&GeertseM\Source\Repos\mikevdtg\vdtg-rmm\VDTG RMM\obj\Debug\net8.0-windows\VDTG RMM.dll
+C:\Users\VanDerToorn&GeertseM\Source\Repos\mikevdtg\vdtg-rmm\VDTG RMM\obj\Debug\net8.0-windows\refint\VDTG RMM.dll
+C:\Users\VanDerToorn&GeertseM\Source\Repos\mikevdtg\vdtg-rmm\VDTG RMM\obj\Debug\net8.0-windows\VDTG RMM.pdb
+C:\Users\VanDerToorn&GeertseM\Source\Repos\mikevdtg\vdtg-rmm\VDTG RMM\obj\Debug\net8.0-windows\VDTG RMM.genruntimeconfig.cache
+C:\Users\VanDerToorn&GeertseM\Source\Repos\mikevdtg\vdtg-rmm\VDTG RMM\obj\Debug\net8.0-windows\ref\VDTG RMM.dll
