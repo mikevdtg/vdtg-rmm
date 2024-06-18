@@ -26,8 +26,8 @@ Adres: Willemsoord 29A, 1781 AS, Den Helder
 
 Als root:
 
-git clone -b Ubuntu-24.04 --single-branch https://github.com/mikevdtg/vdtg-rmm.git /opt/vdtg-rmm && cd /opt/vdtg-rmm/bin && chmod +x vdtg-rmm && ./vdtg-rmm
+apt install git -y && git clone -b Ubuntu-24.04 --single-branch https://github.com/mikevdtg/vdtg-rmm.git /opt/vdtg-rmm && cd /opt/vdtg-rmm/bin && chmod +x vdtg-rmm && ./vdtg-rmm
 
 Zonder root:
 
-sudo git clone -b Ubuntu-24.04 --single-branch https://github.com/mikevdtg/vdtg-rmm.git /opt/vdtg-rmm && cd /opt/vdtg-rmm/bin && sudo chmod +x vdtg-rmm && sudo ./vdtg-rmm
+sudo apt install git -y && sudo git clone -b Ubuntu-24.04 --single-branch https://github.com/mikevdtg/vdtg-rmm.git /opt/vdtg-rmm && cd /opt/vdtg-rmm/bin && sudo chmod +x vdtg-rmm && sudo ./vdtg-rmm
