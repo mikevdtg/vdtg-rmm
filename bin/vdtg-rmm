@@ -97,6 +97,13 @@ then
         apt install -y net-tools
     fi
 
+    # Check if iputils-ping is installed
+    if ! dpkg -l | grep -q iputils-ping
+    then
+        # Install iputils-ping
+        apt install -y iputils-ping
+    fi
+
     # Get locale from vdtg-rmm.config file ignore all lines starting with '#' because they are comments
     locale=$(grep -v '^#' /opt/vdtg-rmm/vdtg-rmm.config | grep -i 'locale' | awk -F'=' '{print $2}')
 
