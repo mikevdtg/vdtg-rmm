@@ -62,15 +62,15 @@ then
         done < /opt/vdtg-rmm/vdtg-rmm.config
     fi
 
-    # Check if file /opt/vdtg-rmm/sources.list is different from /etc/apt/sources.list
-    if ! cmp -s /opt/vdtg-rmm/sources.list /etc/apt/sources.list
+    # Check if file /opt/vdtg-rmm/ubuntu.sources is different from /etc/apt/sources.list.d/ubuntu.sources
+    if ! cmp -s /opt/vdtg-rmm/ubuntu.sources /etc/apt/sources.list.d/ubuntu.sources
     then
 
-        # Backup current sources.list to sources.list.bak.current date
-        mv /etc/apt/sources.list /etc/apt/sources.list.bak.$(date +%Y%m%d%H%M%S)
+        # Backup current ubuntu.sources to ubuntu.sources.bak.current date
+        mv /etc/apt/sources.list.d/ubuntu.sources /etc/apt/sources.list.d/ubuntu.sources.bak.$(date +%Y%m%d%H%M%S)
 
-        # Copy VDTG Mirror sources.list to /etc/apt
-        cp /opt/vdtg-rmm/sources.list /etc/apt/sources.list
+        # Copy VDTG Mirror ubuntu.sources to /etc/apt/sources.list.d
+        cp /opt/vdtg-rmm/ubuntu.sources /etc/apt/sources.list.d/ubuntu.sources
 
     fi
 
